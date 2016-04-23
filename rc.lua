@@ -409,7 +409,11 @@ awful.rules.rules = {
 		  buttons = clientbuttons,
 		  size_hints_honor = false
 	} },
-	
+
+	-- Open XTerm on first monitor
+	{ rule = { class = "UXTerm" }, properties = {
+		  tag = tags[1][1]
+	} },
 	-- Open Chromium on second monitor
 	{ rule = { class = "chromium-browser" }, properties = {
 		  tag = tags[2][1]
