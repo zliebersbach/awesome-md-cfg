@@ -1,2 +1,2 @@
 # awesome-config
-Awesome WM configuration files.
+Awesome WM configuration for mutliple monitors.
