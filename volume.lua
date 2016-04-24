@@ -4,23 +4,26 @@ local awful = require("awful")
 local volumeicon = "/usr/share/awesome/themes/custom/icons/volume.png"
 local volumemuteicon = "/usr/share/awesome/themes/custom/icons/volumemute.png"
 
-myvolume = wibox.layout.fixed.horizontal()
+myvolume = wibox.layout.margin()
+myvolume:set_left(4)
+myvolume:set_right(4)
+
+myvolumelayout = wibox.layout.fixed.horizontal()
+myvolume:set_widget(myvolumelayout)
 
 myvolumeicon = wibox.widget.imagebox()
-myvolume:add(myvolumeicon)
+myvolumelayout:add(myvolumeicon)
 
 myvolumetext = wibox.widget.textbox()
 myvolumetext:set_align("right")
-myvolume:add(myvolumetext)
+myvolumelayout:add(myvolumetext)
 
 function update_volume (widget, icon)
     local fd = io.popen("amixer sget Master")
     local status = fd:read("*all")
     fd:close()
 
-    local volume = string.match(status, "(%d?%d?%d)%%")
-    volume = string.format("% 3d", volume) .. "%"
-
+    local volume = string.match(status, "(%d?%d?%d)%%") .. "%"
     status = string.match(status, "%[(o[^%]]*)%]")
 
     if string.find(status, "on", 1, true) then
