@@ -414,6 +414,10 @@ awful.rules.rules = {
 	{ rule = { class = "UXTerm" }, properties = {
 		  tag = tags[1][1]
 	} },
+	-- Open Android Studio on first monitor (second tag)
+	{ rule = { class = "jetbrains-studio" }, properties = {
+		  tag = tags[1][2]
+	} },
 	-- Open Chromium on second monitor
 	{ rule = { class = "chromium-browser" }, properties = {
 		  tag = tags[2][1]
