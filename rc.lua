@@ -518,5 +518,7 @@ for i = 1, 3 do
 end
 run_once("chromium")
 run_once("compton -b --dbus --backend glx --vsync opengl-swc")
+run_once("google-musicmanager")
 run_once("owncloud")
+run_once("transmission-gtk -m")
 -- }}}
