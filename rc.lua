@@ -17,14 +17,23 @@ require("volume")
 require("temp")
 
 -- {{{ Startup program
+-- pgrep function.
+function process_exists (processname)
+	local fd = io.popen("pgrep -u $USER -x " .. processname .. " > /dev/null ; echo $?")
+	local status = tonumber(fd:read("*all"))
+	fd:close()
+	return status == 0
+end
 -- Function that checks if a program is running and starts it if not.
 function run_once (cmd)
-	local findme = cmd
+	local cmdname = cmd
 	local firstspace = cmd:find(" ")
 	if firstspace then
-		findme = cmd:sub(0, firstspace - 1)
+		cmdname = cmd:sub(0, firstspace - 1)
 	end
-	awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+	if not process_exists(cmdname) then
+		awful.util.spawn_with_shell(cmd)
+	end
 end
 -- }}}
 
@@ -422,16 +431,15 @@ awful.rules.rules = {
 	{ rule = { class = "chromium-browser" }, properties = {
 		  tag = tags[2][1]
 	} },
+	{ rule = {
+		  instance = "crx_fahmaaghhglfmonjliepjlchgpgfmobi"
+	}, properties = {
+		  floating = true
+	} },
 	-- Open graphics programs on second monitor (second tag)
-	{ rule = { class = "display" }, properties = {
+	{ rule_any = { class = { "display", "Display", "inkscape", "gimp" } }, properties = {
 		  tag = tags[2][2]
-	} },
-	{ rule = { class = "inkscape" }, properties = {
-		  tag = tags[2][2]
-	} },
-	{ rule = { class = "gimp" }, properties = {
-		  tag = tags[2][2]
-	} },
+	} }
 }
 -- }}}
 
@@ -518,7 +526,9 @@ for i = 1, 3 do
 end
 run_once("chromium")
 run_once("compton -b --dbus --backend glx --vsync opengl-swc")
-run_once("google-musicmanager")
+if not process_exists("MusicManager") then
+	run_once("google-musicmanager")
+end
 run_once("owncloud")
 run_once("transmission-gtk -m")
 -- }}}
