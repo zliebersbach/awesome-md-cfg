@@ -85,7 +85,8 @@ theme.layout_tiletop = "/usr/share/awesome/themes/custom/layouts/tiletopw.png"
 theme.layout_spiral  = "/usr/share/awesome/themes/custom/layouts/spiralw.png"
 theme.layout_dwindle = "/usr/share/awesome/themes/custom/layouts/dwindlew.png"
 
-theme.awesome_icon = "/usr/share/awesome/themes/custom/icons/menu.png"
+theme.menu_icon = "/usr/share/awesome/themes/custom/icons/menu.png"
+theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
 -- Define the icon theme for application icons. If not set then the icons 
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
