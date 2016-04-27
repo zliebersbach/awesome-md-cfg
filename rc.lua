@@ -419,9 +419,10 @@ awful.rules.rules = {
 		  size_hints_honor = false
 	} },
 
-	-- Open XTerm on first monitor
+	-- Open XTerm on first monitor, and add transparency
 	{ rule = { class = "UXTerm" }, properties = {
-		  tag = tags[1][1]
+		  tag = tags[1][1],
+		  opacity = 0.8
 	} },
 	-- Open Android Studio on first monitor (second tag)
 	{ rule = { class = "jetbrains-studio" }, properties = {
