@@ -424,8 +424,10 @@ awful.rules.rules = {
 		  tag = tags[1][1],
 		  opacity = 0.8
 	} },
-	-- Open Android Studio on first monitor (second tag)
-	{ rule = { class = "jetbrains-studio" }, properties = {
+	-- Open IDEs and editors on first monitor (second tag)
+	{ rule_any = {
+		  class = { "jetbrains-studio", "libreoffice" }
+	}, properties = {
 		  tag = tags[1][2]
 	} },
 	-- Open Chromium on second monitor
@@ -523,12 +525,14 @@ client.connect_signal("unfocus", function (c) c.border_color = beautiful.border_
 -- }}}
 
 -- {{{ Autostart programs
+run_once("compton -b --dbus --backend glx --vsync opengl-swc")
 -- Spawn 3 xterm instances
 for i = 1, 3 do
 	awful.util.spawn_with_shell("uxterm")
 end
 run_once("chromium")
-run_once("compton -b --dbus --backend glx --vsync opengl-swc")
+-- Start Google Play Music and Music Manager
+awful.util.spawn_with_shell("gtk-launch chrome-fahmaaghhglfmonjliepjlchgpgfmobi-Default")
 if not process_exists("MusicManager") then
 	run_once("google-musicmanager")
 end
