@@ -431,7 +431,7 @@ awful.rules.rules = {
 		  tag = tags[1][2]
 	} },
 	-- Open Chromium on second monitor
-	{ rule = { class = "chromium-browser" }, properties = {
+	{ rule = { class = "chromium" }, properties = {
 		  tag = tags[2][1]
 	} },
 	{ rule = {
