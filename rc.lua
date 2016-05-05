@@ -118,7 +118,7 @@ for s = 1, screen.count() do
 		layout = awful.layout.suit.fair.horizontal
 	end
 	-- Each screen has its own tag table.
-	tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layout)
+	tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8 }, s, layout)
 end
 -- }}}
 
@@ -431,8 +431,8 @@ awful.rules.rules = {
 		  tag = tags[1][2]
 	} },
 	-- Open Chromium on second monitor
-	{ rule = { class = "chromium-browser" }, properties = {
-		  tag = tags[2][1]
+	{ rule = { class = "chromium" }, properties = {
+		  tag = tags[1][3]
 	} },
 	{ rule = {
 		  instance = "crx_fahmaaghhglfmonjliepjlchgpgfmobi"
@@ -443,7 +443,7 @@ awful.rules.rules = {
 	{ rule_any = {
 		  class = { "display", "Display", "inkscape", "gimp" }
 	}, properties = {
-		  tag = tags[2][2]
+		  tag = tags[1][4]
 	} }
 }
 -- }}}
