@@ -442,7 +442,7 @@ awful.rules.rules = {
 	} },
 	-- Open graphics programs on second monitor (second tag)
 	{ rule_any = {
-		  class = { "display", "Display", "inkscape", "gimp" }
+		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
 	}, properties = {
 		  tag = tags[2][2]
 	} }
