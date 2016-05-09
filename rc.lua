@@ -118,7 +118,7 @@ for s = 1, screen.count() do
 		layout = awful.layout.suit.fair.horizontal
 	end
 	-- Each screen has its own tag table.
-	tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layout)
+	tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8 }, s, layout)
 end
 -- }}}
 
@@ -419,32 +419,32 @@ awful.rules.rules = {
 		  size_hints_honor = false
 	} },
 
-	-- Open XTerm on first monitor, and add transparency
+	-- Open XTerm on first tag, and add transparency
 	{ rule = { class = "UXTerm" }, properties = {
 		  tag = tags[1][1],
 		  opacity = 0.8
 	} },
-	-- Open IDEs and editors on first monitor (second tag)
-	{ rule_any = {
-		  class = { "jetbrains-studio", "libreoffice" }
-	}, properties = {
-		  tag = tags[1][2]
-	} },
-	-- Open Chromium on second monitor
+	-- Open Chromium on second tag
 	{ rule = { class = "chromium" }, properties = {
-		  tag = tags[2][1]
+		  tag = tags[1][2]
 	} },
 	{ rule = {
 		  instance = "crx_fahmaaghhglfmonjliepjlchgpgfmobi"
 	}, properties = {
 		  floating = true,
-		  tag = tags[2][1]
+		  tag = tags[1][2]
 	} },
-	-- Open graphics programs on second monitor (second tag)
+	-- Open IDEs and editors on third tag
+	{ rule_any = {
+		  class = { "jetbrains-studio", "libreoffice" }
+	}, properties = {
+		  tag = tags[1][3]
+	} },
+	-- Open graphics programs on fourth tag
 	{ rule_any = {
 		  class = { "display", "Display", "inkscape", "gimp" }
 	}, properties = {
-		  tag = tags[2][2]
+		  tag = tags[1][4]
 	} }
 }
 -- }}}
