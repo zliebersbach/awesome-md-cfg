@@ -531,7 +531,7 @@ run_once("compton -b --dbus --backend glx --vsync opengl-swc")
 for i = 1, 3 do
 	awful.util.spawn_with_shell("uxterm")
 end
-run_once("chromium")
+run_once("gtk-launch chromium")
 -- Start Google Play Music and Music Manager
 awful.util.spawn_with_shell("gtk-launch chrome-fahmaaghhglfmonjliepjlchgpgfmobi-Default")
 if not process_exists("MusicManager") then
