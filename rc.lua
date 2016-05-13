@@ -430,8 +430,12 @@ awful.rules.rules = {
 	}, properties = {
 		  tag = tags[1][2]
 	} },
-	-- Open Chromium on second monitor
-	{ rule = { class = "chromium" }, properties = {
+	-- Open Chromium and browsers on second monitor
+	{ rule_any = {
+		  class = {
+			  "chromium", "Navigator", "Firefox", "Tor Browser", "TorLauncher"
+		  }
+	}, properties = {
 		  tag = tags[2][1]
 	} },
 	{ rule = {
@@ -531,7 +535,9 @@ run_once("compton -b --dbus --backend glx --vsync opengl-swc")
 for i = 1, 3 do
 	awful.util.spawn_with_shell("uxterm")
 end
-run_once("gtk-launch chromium")
+if not process_exists("chromium") then
+	run_once("gtk-launch chromium")
+end
 -- Start Google Play Music and Music Manager
 awful.util.spawn_with_shell("gtk-launch chrome-fahmaaghhglfmonjliepjlchgpgfmobi-Default")
 if not process_exists("MusicManager") then
