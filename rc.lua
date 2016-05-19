@@ -112,7 +112,7 @@ end
 tags = {}
 for s = 1, screen.count() do
 	-- Check which display it is and assign the desired layout.
-	if s == 2 then
+	if s == 1 then
 		layout = awful.layout.suit.max
 	else
 		layout = awful.layout.suit.fair.horizontal
@@ -417,18 +417,20 @@ awful.rules.rules = {
 		  keys = clientkeys,
 		  buttons = clientbuttons,
 		  size_hints_honor = false
-	} },
+	}, callback = function (c)
+		  awful.client.jumpto(c, false)
+	end },
 
 	-- Open XTerm on first monitor, and add transparency
 	{ rule = { class = "UXTerm" }, properties = {
-		  tag = tags[1][1],
+		  tag = tags[2][1],
 		  opacity = 0.8
 	} },
 	-- Open IDEs and editors on first monitor (second tag)
 	{ rule_any = {
 		  class = { "jetbrains-studio", "libreoffice" }
 	}, properties = {
-		  tag = tags[1][2]
+		  tag = tags[2][2]
 	} },
 	-- Open Chromium and browsers on second monitor
 	{ rule_any = {
@@ -436,19 +438,19 @@ awful.rules.rules = {
 			  "chromium", "Navigator", "Firefox", "Tor Browser", "TorLauncher"
 		  }
 	}, properties = {
-		  tag = tags[2][1]
+		  tag = tags[1][1]
 	} },
 	{ rule = {
 		  instance = "crx_fahmaaghhglfmonjliepjlchgpgfmobi"
 	}, properties = {
 		  floating = true,
-		  tag = tags[2][1]
+		  tag = tags[1][1]
 	} },
 	-- Open graphics programs on second monitor (second tag)
 	{ rule_any = {
 		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
 	}, properties = {
-		  tag = tags[2][2]
+		  tag = tags[1][2]
 	} }
 }
 -- }}}
