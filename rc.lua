@@ -11,11 +11,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- Volume widget
-require("volume")
--- Temperature widget
-require("temp")
-
 -- {{{ Startup program
 -- pgrep function.
 function process_exists (processname)
@@ -68,7 +63,13 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/custom/theme.lua")
+beautiful.init("/usr/share/awesome/themes/material-dark/theme.lua")
+
+-- Require widgets after theme is initialized so they can use it.
+-- Volume widget
+require("volume")
+-- Temperature widget
+require("temp")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
