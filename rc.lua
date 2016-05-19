@@ -542,7 +542,6 @@ if not process_exists("chromium") then
 	run_once("gtk-launch chromium")
 end
 -- Start Google Play Music and Music Manager
-awful.util.spawn_with_shell("gtk-launch chrome-fahmaaghhglfmonjliepjlchgpgfmobi-Default")
 if not process_exists("MusicManager") then
 	run_once("google-musicmanager")
 end
