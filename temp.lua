@@ -1,5 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local beautiful = require("beautiful")
 
 mytemp = wibox.layout.margin()
 mytemp:set_left(4)
@@ -9,7 +10,7 @@ mytemplayout = wibox.layout.fixed.horizontal()
 mytemp:set_widget(mytemplayout)
 
 mytempicon = wibox.widget.imagebox()
-mytempicon:set_image("/usr/share/awesome/themes/custom/icons/cpu.png")
+mytempicon:set_image(beautiful.cpu_icon)
 mytemplayout:add(mytempicon)
 
 mytemptext = wibox.widget.textbox()

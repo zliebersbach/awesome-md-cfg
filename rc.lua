@@ -11,11 +11,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- Volume widget
-require("volume")
--- Temperature widget
-require("temp")
-
 -- {{{ Startup program
 -- pgrep function.
 function process_exists (processname)
@@ -68,7 +63,13 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/custom/theme.lua")
+beautiful.init("/usr/share/awesome/themes/material-dark/theme.lua")
+
+-- Require widgets after theme is initialized so they can use it.
+-- Volume widget
+require("volume")
+-- Temperature widget
+require("temp")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -111,14 +112,8 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
-	-- Check which display it is and assign the desired layout.
-	if s == 2 then
-		layout = awful.layout.suit.max
-	else
-		layout = awful.layout.suit.fair.horizontal
-	end
 	-- Each screen has its own tag table.
-	tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8 }, s, layout)
+	tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8 }, s, awful.layout.suit.fair.horizontal)
 end
 -- }}}
 
@@ -417,15 +412,21 @@ awful.rules.rules = {
 		  keys = clientkeys,
 		  buttons = clientbuttons,
 		  size_hints_honor = false
-	} },
+	}, callback = function (c)
+		  awful.client.jumpto(c, false)
+	end },
 
 	-- Open XTerm on first tag, and add transparency
 	{ rule = { class = "UXTerm" }, properties = {
 		  tag = tags[1][1],
 		  opacity = 0.8
 	} },
-	-- Open Chromium on second tag
-	{ rule = { class = "chromium" }, properties = {
+	-- Open Chromium and browsers on second monitor
+	{ rule_any = {
+		  class = {
+			  "chromium", "Navigator", "Firefox", "Tor Browser", "TorLauncher"
+		  }
+	}, properties = {
 		  tag = tags[1][2]
 	} },
 	{ rule = {
@@ -442,7 +443,7 @@ awful.rules.rules = {
 	} },
 	-- Open graphics programs on fourth tag
 	{ rule_any = {
-		  class = { "display", "Display", "inkscape", "gimp" }
+		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
 	}, properties = {
 		  tag = tags[1][4]
 	} }
@@ -531,9 +532,10 @@ run_once("compton -b --dbus --backend glx --vsync opengl-swc")
 for i = 1, 3 do
 	awful.util.spawn_with_shell("uxterm")
 end
-run_once("gtk-launch chromium")
+if not process_exists("chromium") then
+	run_once("gtk-launch chromium")
+end
 -- Start Google Play Music and Music Manager
-awful.util.spawn_with_shell("gtk-launch chrome-fahmaaghhglfmonjliepjlchgpgfmobi-Default")
 if not process_exists("MusicManager") then
 	run_once("google-musicmanager")
 end
