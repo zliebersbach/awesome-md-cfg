@@ -1,8 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
-
-local volumeicon = "/usr/share/awesome/themes/custom/icons/volume.png"
-local volumemuteicon = "/usr/share/awesome/themes/custom/icons/volumemute.png"
+local beautiful = require("beautiful")
 
 myvolume = wibox.layout.margin()
 myvolume:set_left(4)
@@ -28,10 +26,10 @@ function update_volume (widget, icon)
 
     if string.find(status, "on", 1, true) then
         -- For the volume number percentage
-        icon:set_image(volumeicon)
+        icon:set_image(beautiful.volume_icon)
     else
         -- For displaying the mute status.
-        icon:set_image(volumemuteicon)
+        icon:set_image(beautiful.volumemute_icon)
     end
     widget:set_markup(volume)
 end
