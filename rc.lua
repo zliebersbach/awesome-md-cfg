@@ -125,10 +125,15 @@ myawesomemenu = {
 	{ "restart", awesome.restart },
 	{ "quit", awesome.quit }
 }
+mysystemmenu = {
+	{ "power off", "/sbin/poweroff" },
+	{ "reboot", "/sbin/reboot" }
+}
 
 mymainmenu = awful.menu({
 		items = {
 			{ "awesome", myawesomemenu, beautiful.awesome_icon },
+			{ "system", mysystemmenu },
 			{ "open terminal", terminal }
 		}
 })
