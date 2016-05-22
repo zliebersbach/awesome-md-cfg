@@ -103,7 +103,7 @@ local layouts = {
 -- {{{ Wallpaper
 if beautiful.wallpaper then
 	for s = 1, screen.count() do
-		gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+		gears.wallpaper.maximized(beautiful.wallpaper, s, false)
 	end
 end
 -- }}}
@@ -155,7 +155,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock(" %d %b %Y %H:%M ")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -233,7 +233,7 @@ for s = 1, screen.count() do
 
 	-- Widgets that are aligned to the left
 	local left_layout = wibox.layout.fixed.horizontal()
-	left_layout:add(mylauncher)
+	left_layout:add(mylayoutbox[s])
 	left_layout:add(mytaglist[s])
 	left_layout:add(mypromptbox[s])
 
@@ -243,7 +243,7 @@ for s = 1, screen.count() do
 	right_layout:add(mytemp)
 	right_layout:add(myvolume)
 	right_layout:add(mytextclock)
-	right_layout:add(mylayoutbox[s])
+	right_layout:add(mylauncher)
 
 	-- Now bring it all together (with the tasklist in the middle)
 	local layout = wibox.layout.align.horizontal()
