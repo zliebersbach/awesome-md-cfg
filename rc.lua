@@ -116,7 +116,7 @@ for s = 1, screen.count() do
 	if s == 1 then
 		layout = awful.layout.suit.max
 	else
-		layout = awful.layout.suit.fair.horizontal
+		layout = awful.layout.suit.tile
 	end
 	-- Each screen has its own tag table.
 	tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layout)
@@ -211,7 +211,7 @@ mytasklist.buttons = awful.util.table.join(
 for s = 1, screen.count() do
 	-- Create a promptbox for each screen
 	mypromptbox[s] = awful.widget.prompt()
-	
+
 	-- Create an imagebox widget which will contains an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	mylayoutbox[s] = awful.widget.layoutbox(s)
