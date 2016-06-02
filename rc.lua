@@ -427,36 +427,42 @@ awful.rules.rules = {
 		  awful.client.jumpto(c, false)
 	end },
 
-	-- Open XTerm on first monitor, and add transparency
+	-- Open XTerm on first monitor, and add transparency.
 	{ rule = { class = "UXTerm" }, properties = {
-		  tag = tags[2][1],
+		  tag = tags[1][1],
 		  opacity = 0.8
 	} },
-	-- Open IDEs and editors on first monitor (second tag)
+	-- Open IDEs and editors on first monitor (second tag).
 	{ rule_any = {
 		  class = { "jetbrains-studio", "libreoffice" }
 	}, properties = {
-		  tag = tags[2][2]
+		  tag = tags[1][2]
 	} },
-	-- Open Chromium and browsers on second monitor
+	-- Open Chromium and browsers on second monitor.
 	{ rule_any = {
 		  class = {
 			  "chromium", "Navigator", "Firefox", "Tor Browser", "TorLauncher"
 		  }
 	}, properties = {
-		  tag = tags[1][1]
+		  tag = tags[2][1]
 	} },
 	{ rule = {
 		  instance = "crx_fahmaaghhglfmonjliepjlchgpgfmobi"
 	}, properties = {
 		  floating = true,
-		  tag = tags[1][1]
+		  tag = tags[2][1]
 	} },
-	-- Open graphics programs on second monitor (second tag)
+	-- Open graphics programs on second monitor (second tag).
 	{ rule_any = {
 		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
 	}, properties = {
-		  tag = tags[1][2]
+		  tag = tags[2][2]
+	} },
+	-- Open VLC on second monitor (third tag).
+	{ rule_any = {
+		  class = { "vlc" }
+	}, properties = {
+		  tag = tags[2][3]
 	} }
 }
 -- }}}
