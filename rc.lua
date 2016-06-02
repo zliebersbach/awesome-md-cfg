@@ -421,12 +421,12 @@ awful.rules.rules = {
 		  awful.client.jumpto(c, false)
 	end },
 
-	-- Open XTerm on first tag, and add transparency
+	-- Open XTerm on first tag, and add transparency.
 	{ rule = { class = "UXTerm" }, properties = {
 		  tag = tags[1][1],
 		  opacity = 0.8
 	} },
-	-- Open Chromium and browsers on second monitor
+	-- Open Chromium and browsers on second tag.
 	{ rule_any = {
 		  class = {
 			  "chromium", "Navigator", "Firefox", "Tor Browser", "TorLauncher"
@@ -440,17 +440,23 @@ awful.rules.rules = {
 		  floating = true,
 		  tag = tags[1][2]
 	} },
-	-- Open IDEs and editors on third tag
+	-- Open IDEs and editors on third tag.
 	{ rule_any = {
 		  class = { "jetbrains-studio", "libreoffice" }
 	}, properties = {
 		  tag = tags[1][3]
 	} },
-	-- Open graphics programs on fourth tag
+	-- Open graphics programs on fourth tag.
 	{ rule_any = {
 		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
 	}, properties = {
 		  tag = tags[1][4]
+	} },
+	-- Open VLC on fifth tag.
+	{ rule_any = {
+		  class = { "vlc" }
+	}, properties = {
+		  tag = tags[1][5]
 	} }
 }
 -- }}}
