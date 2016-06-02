@@ -114,9 +114,9 @@ tags = {}
 for s = 1, screen.count() do
 	-- Check which display it is and assign the desired layout.
 	if s == 1 then
-		layout = awful.layout.suit.max
-	else
 		layout = awful.layout.suit.tile
+	else
+		layout = awful.layout.suit.max
 	end
 	-- Each screen has its own tag table.
 	tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layout)
