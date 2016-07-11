@@ -434,7 +434,7 @@ awful.rules.rules = {
 	} },
 	-- Open IDEs and editors on first monitor (second tag).
 	{ rule_any = {
-		  class = { "jetbrains-studio", "libreoffice" }
+		  class = { "code", "Code", "jetbrains-studio", "libreoffice" }
 	}, properties = {
 		  tag = tags[1][2]
 	} },
@@ -454,7 +454,9 @@ awful.rules.rules = {
 	} },
 	-- Open graphics programs on second monitor (second tag).
 	{ rule_any = {
-		  class = { "display", "Display", "inkscape", "Inkscape", "gimp" }
+		  class = {
+			  "display", "Display", "inkscape", "Inkscape", "gimp", "Gimp"
+		  }
 	}, properties = {
 		  tag = tags[2][2]
 	} },
