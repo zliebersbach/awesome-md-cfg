@@ -452,14 +452,20 @@ awful.rules.rules = {
 	}, properties = {
 		  tag = tags[1][4]
 	} },
-	-- Open VLC and GPU intensive programs on fifth tag.
+	-- Open VLC on fifth tag.
 	{ rule_any = {
-		  class = {
-			  "linux_64_client", -- Cube 2: Sauerbraten
-			  "vlc"
-		  },
+		  class = { "vlc" }
 	}, properties = {
 		  tag = tags[1][5]
+	} },
+	-- Open GPU intensive programs on sixth tag.
+	{ rule_any = {
+		  class = {
+			  "linux_64_client" -- Cube 2: Sauerbraten
+		  }
+	}, properties = {
+		  tag = tags[1][6],
+		  floating = true
 	} }
 }
 -- }}}
