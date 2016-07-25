@@ -460,9 +460,12 @@ awful.rules.rules = {
 	}, properties = {
 		  tag = tags[2][2]
 	} },
-	-- Open VLC on second monitor (third tag).
+	-- Open VLC and GPU intensive programs on second monitor (third tag).
 	{ rule_any = {
-		  class = { "vlc" }
+		  class = {
+			  "linux_64_client", -- Cube 2: Sauerbraten
+			  "vlc"
+		  },
 	}, properties = {
 		  tag = tags[2][3]
 	} }
