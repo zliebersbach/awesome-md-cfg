@@ -427,10 +427,9 @@ awful.rules.rules = {
 		  awful.client.jumpto(c, false)
 	end },
 
-	-- Open XTerm on first monitor, and add transparency.
+	-- Open XTerm on first monitor.
 	{ rule = { class = "UXTerm" }, properties = {
-		  tag = tags[1][1],
-		  opacity = 0.8
+		  tag = tags[1][1]
 	} },
 	-- Open IDEs and editors on first monitor (second tag).
 	{ rule_any = {
