@@ -421,10 +421,9 @@ awful.rules.rules = {
 		  awful.client.jumpto(c, false)
 	end },
 
-	-- Open XTerm on first tag, and add transparency.
+	-- Open XTerm on first tag.
 	{ rule = { class = "UXTerm" }, properties = {
-		  tag = tags[1][1],
-		  opacity = 0.8
+		  tag = tags[1][1]
 	} },
 	-- Open Chromium and browsers on second tag.
 	{ rule_any = {
