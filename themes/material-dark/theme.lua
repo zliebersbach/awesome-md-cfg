@@ -1,6 +1,6 @@
 theme = {}
 
-theme.font          = "Sans 8"
+theme.font          = "Roboto 8"
 
 theme.bg_normal     = "#303030"
 theme.bg_focus      = "#424242"
@@ -8,7 +8,7 @@ theme.bg_urgent     = theme.bg_focus
 theme.bg_minimize   = theme.bg_focus
 theme.bg_systray    = "#212121"
 
-theme.fg_normal     = "#B0B0B0"
+theme.fg_normal     = "#FFFFFF"
 theme.fg_focus      = "#FFFFFF"
 theme.fg_urgent     = theme.fg_focus
 theme.fg_minimize   = theme.fg_normal
@@ -27,7 +27,7 @@ theme.border_marked = theme.bg_focus
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- Example:
---theme.taglist_bg_focus = "#ff0000"
+--theme.taglist_bg_focus = "#FF0000"
 
 -- Display the taglist squares
 theme.taglist_squares_sel   = "/usr/share/awesome/themes/material-dark/taglist/squarefw.png"
@@ -43,7 +43,7 @@ theme.menu_width  = 128
 -- You can add as many variables as
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
+--theme.bg_widget = "#CC0000"
 
 -- Define the image to load
 theme.titlebar_close_button_normal = "/usr/share/awesome/themes/material-dark/titlebar/close_normal.png"
