@@ -120,22 +120,22 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-	{ "manual", terminal .. " -e man awesome" },
-	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "restart", awesome.restart },
-	{ "quit", awesome.quit }
+	{ "Manual", terminal .. " -e man awesome" },
+	{ "Edit Config", editor_cmd .. " " .. awesome.conffile },
+	{ "Restart", awesome.restart },
+	{ "Quit", awesome.quit }
 }
 mysystemmenu = {
-	{ "hibernate", "systemctl hibernate" },
-	{ "power off", "systemctl poweroff" },
-	{ "reboot", "systemctl reboot" }
+	{ "Hibernate", "systemctl hibernate" },
+	{ "Power Off", "systemctl poweroff" },
+	{ "Reboot", "systemctl reboot" }
 }
 
 mymainmenu = awful.menu({
 		items = {
-			{ "awesome", myawesomemenu, beautiful.awesome_icon },
-			{ "system", mysystemmenu },
-			{ "open terminal", terminal }
+			{ "Awesome", myawesomemenu, beautiful.awesome_icon },
+			{ "System", mysystemmenu },
+			{ "Open Terminal", terminal }
 		}
 })
 
