@@ -183,16 +183,6 @@ mytasklist.buttons = awful.util.table.join(
 				c:raise()
 			end
 	end),
-	awful.button({ }, 3, function ()
-			if instance then
-				instance:hide()
-				instance = nil
-			else
-				instance = awful.menu.clients({
-						theme = { width = 250 }
-				})
-			end
-	end),
 	awful.button({ }, 4, function ()
 			awful.client.focus.byidx(1)
 			if client.focus then client.focus:raise() end
@@ -224,7 +214,7 @@ for s = 1, screen.count() do
 	mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
 	-- Create the wibox
-	mywibox[s] = awful.wibox({ position = "top", screen = s })
+	mywibox[s] = awful.wibox({ position = "top", screen = s, height = "24" })
 
 	-- Widgets that are aligned to the left
 	local left_layout = wibox.layout.fixed.horizontal()
