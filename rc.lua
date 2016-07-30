@@ -132,8 +132,9 @@ myawesomemenu = {
 	{ "quit", awesome.quit }
 }
 mysystemmenu = {
-	{ "power off", "/sbin/poweroff" },
-	{ "reboot", "/sbin/reboot" }
+	{ "hibernate", "systemctl hibernate" },
+	{ "power off", "systemctl poweroff" },
+	{ "reboot", "systemctl reboot" }
 }
 
 mymainmenu = awful.menu({
