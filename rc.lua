@@ -73,6 +73,7 @@ require("temp")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
+screenshot = "scrot -e \"mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots\""
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -319,7 +320,10 @@ globalkeys = awful.util.table.join(
 	end),
 	awful.key({ }, "XF86AudioMute", function ()
 			awful.util.spawn("amixer -q sset Master toggle", false)
-	end)
+	end),
+
+	-- Screenshot
+	awful.key({ }, "Print", function () awful.util.spawn(screenshot) end)
 )
 
 clientkeys = awful.util.table.join(
